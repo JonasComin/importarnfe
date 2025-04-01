@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de NCM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container mt-5">
+    <h2 class="mb-4">📋 NCMs Cadastrados</h2>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ 'success' if category == 'success' else 'danger' }}">{{ message }}</div>
+      {% endfor %}
+    {% endwith %}
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr><th>NCM</th><th>Substituição Tributária</th><th>Data</th><th>Ações</th></tr>
+        </thead>
+        <tbody>
+        {% for ncm in ncms %}
+        <tr>
+            <td>{{ ncm[0] }}</td>
+            <td>{{ ncm[1] }}</td>
+            <td>{{ ncm[2] }}</td>
+            <td>
+                <a href="/ncm/editar/{{ ncm[0] }}" class="btn btn-sm btn-warning">Editar</a>
+                <a href="/ncm/excluir/{{ ncm[0] }}" class="btn btn-sm btn-danger" onclick="return confirm('Excluir {{ ncm[0] }}?')">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="/ncm/exportar/excel" class="btn btn-success">📥 Exportar Excel</a>
+    <a href="/ncm/exportar/pdf" class="btn btn-outline-primary">📄 Gerar PDF</a>
+    <a href="/" class="btn btn-secondary">Voltar</a>
+</div>
+</body>
+</html>
