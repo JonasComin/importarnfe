@@ -53,11 +53,12 @@ def home():
 
 @app.route("/importar_xml")
 def importar_xml():
-    return render_template("importar.html")
+    return render_template("https://importarnfe.onrender.com/importar_xml")
+
 
 @app.route("/ver_ncm")
 def ver_ncm():
-    return render_template("ncm.html")
+    return render_template("https://importarnfe.onrender.com/ver_ncm")
 
 @app.route("/notas")
 def ver_notas():
