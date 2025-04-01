@@ -53,12 +53,12 @@ def home():
 
 @app.route("/importar_xml")
 def importar_xml():
-    return render_template("https://importarnfe.onrender.com/importar_xml")
+    return render_template("importar.html")
 
 
 @app.route("/ver_ncm")
 def ver_ncm():
-    return render_template("https://importarnfe.onrender.com/ver_ncm")
+    return render_template("ncm.html")
 
 @app.route("/notas")
 def ver_notas():
@@ -70,7 +70,7 @@ def ver_itens():
 
 @app.route("/editar_ncm/<int:id>")
 def editar_ncm(id):
-    return render_template("editar_ncm.html", id=id)
+    return render_template("editar_ncm.html")
 
 if __name__ == "__main__":
     criar_banco()
